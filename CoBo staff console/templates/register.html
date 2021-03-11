@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            /* color: #F8F8FF; */
+            background: #F8F8FF;
+        }
+
+        .login-box {
+            width: 410px;
+            margin: 220px auto 0 auto;
+            text-align: center;
+            padding: 30px;
+            background: transparent;
+            border-radius: 10px;
+            border: solid 1px #ddd;
+            padding-bottom: 40px;
+        }
+
+        .login-box .name,
+        .login-box .password,
+        .login-box .code,
+        .login-box .remember {
+            font-size: 16px;
+            text-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 270px;
+            height: 42px;
+            margin-top: 25px;
+            padding: 0px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            color: black;
+            letter-spacing: 1px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        button {
+            cursor: pointer;
+            width: 40%;
+            height: 36px;
+            padding: 0;
+            /* background: #ef4300; */
+            background: #00FF7F;
+            border: 1px solid #00FF7F;
+            border-radius: 6px;
+            font-weight: 300;
+            color: #fff;
+            font-size: 20px;
+            margin-top: 20px;
+            /* letter-spacing: 15px; */
+            text-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+        }
+
+        .slink {
+            color: black;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .alert{
+            background: #FFE599;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        <h2>Register</h2>
+        <hr>
+        <form method="post" action="/register">
+            <div class="name">
+                <label>Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="password">
+                <label>Password:</label>
+                <input type="password" name="password" maxlength="16" id="password" required>
+            </div>
+            <div class="password">
+                <label>Confirm:</label>
+                <input type="password" name="password2" maxlength="16" id="password2" required>
+            </div>
+            <div class="login">
+                <button type="submit" tabindex="5">Register</button>
+                <br>
+                <a href="/login" style="float: right;" class="slink">Already have account, loign ?</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
